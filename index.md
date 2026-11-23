@@ -23,3 +23,9 @@ okf_version: "0.2"
 
 * [Grids](grid/) - The three kept grids that cross the five axis groups with a second set of questions, so a missing axis shows up as an empty cell.
 * [Testing the groups with grids](grid/README.md) - How the six grids scored, which gaps more than one of them found and why three were ditched.
+
+# Experiments
+
+* [Do the axes predict where AI agents fail?](experiments/metr/README.md) - A scratch proof of concept from October 2026 that tagged METR's public tasks on the 40 axes of the time. AI models designed and ran it, and no person has reviewed it in depth yet, so don't lean on its results.
+* [Predictions](experiments/metr/predictions.md) - The guesses written for the proof of concept about which axes would matter, and why the git history can't prove they came first.
+* [Results](experiments/metr/results.md) - Every table from the proof of concept, written by its analysis script from the tags and METR's public run data. Not yet reviewed by a person.

@@ -92,6 +92,8 @@ grid/
 ├── index.md                 the three kept grids
 ├── placements.csv           the cell each grid gave each axis
 └── second-party.md          one file per grid, 3 in all
+experiments/
+└── metr/                    a scratch proof of concept on METR's public tasks, not yet reviewed
 ```
 
 ## Contributing
@@ -100,9 +102,9 @@ This will never be finished. If you spot a missing framework, a wrong link or a 
 
 ## Future projects
 
-In 2025 [METR](https://arxiv.org/abs/2503.14499) scored its tasks for "messiness". They found each point cut AI agents' mean success by about 8.1%. That is a fantastic start at using these axis to quantify performance.
+In 2025 [METR](https://arxiv.org/abs/2503.14499) scored its tasks on 16 "messiness" factors, like whether the agent could check its own answer. In their words, "an increase in task messiness by 1 point reduces mean success rates by roughly 8.1%". That is a fantastic start at using traits like these axes to quantify performance.
 
-We tried to benchmark out axis on the full set on METR's 23 public tasks. We found an suspiciously similar result of 8.5% per point against their 8.1%. However, this dataset is far too small to draw any meaningful conclusions beyond this feels like a meaningful avenue to continue. The aim is to roll this out on a larger set of benchmarks to conduct a more robust meta study.
+We'd like to run the same kind of test with these axes. So far we pulled together a [scratch proof of concept](experiments/metr/README.md). However, note this was built by Claude and it has not been reviewed by a human in depth yet. So please don't put much trust in its results or its design. This is still at the idea stage, and a fuller, properly reviewed study is planned very soon.
 
 ## Licence
 
