@@ -1,8 +1,13 @@
+---
+type: Experiment
+title: Results of the METR pilot
+description: Every table from the archived METR pilot of October 2026, written by analyse.py from tags.csv and METR's public run data.
+---
 # METR retagging: results
 
 Runs file: time horizon 1.1. SWAA and human runs dropped.
 
-These runs used kind-vs-wicked-feedback. That axis has since been narrowed to [Immediate vs delayed feedback](../../axes/immediate-vs-delayed-feedback.md), so its rows here tag the old, wider idea.
+These runs used the 40 axes of October 2026 under their old names. [Old axis names](README.md#old-axis-names) maps each one to its page now. Kind vs wicked feedback has since been narrowed to [Immediate vs delayed feedback](../../axes/immediate-vs-delayed-feedback.md), so its rows here tag the old, wider idea.
 
 ## 0. Baseline: METR's time horizons from public data
 

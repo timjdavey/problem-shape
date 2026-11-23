@@ -294,8 +294,18 @@ def main() -> None:
     args = ap.parse_args()
 
     runs = load_runs(args.runs)
-    report = ["# METR retagging: results", "",
-              f"Runs file: time horizon {args.runs}. SWAA and human runs dropped.", ""]
+    report = ["---",
+              "type: Experiment",
+              "title: Results of the METR pilot",
+              "description: Every table from the archived METR pilot of October 2026, written by analyse.py from tags.csv and METR's public run data.",
+              "---",
+              "# METR retagging: results", "",
+              f"Runs file: time horizon {args.runs}. SWAA and human runs dropped.", "",
+              "These runs used the 40 axes of October 2026 under their old names. "
+              "[Old axis names](README.md#old-axis-names) maps each one to its page now. "
+              "Kind vs wicked feedback has since been narrowed to "
+              "[Immediate vs delayed feedback](../../axes/immediate-vs-delayed-feedback.md), "
+              "so its rows here tag the old, wider idea.", ""]
 
     h = horizons(runs)
     report += ["## 0. Baseline: METR's time horizons from public data", "",

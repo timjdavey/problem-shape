@@ -1,5 +1,10 @@
 # Update Log
 
+## 2026-11-23
+
+* **Update**: Corrected the METR note under [Future projects](/README.md#future-projects), which claimed more than the pilot showed. It said we had benchmarked our axes on METR's tasks and found 8.5% a point against their 8.1%. The 8.5 was the tagger check, where our pipeline scored METR's own 16 factors, and it held only on the 23 tasks with full public text. On our own axes the pilot gave one lead, Verifiable vs unverifiable, that didn't survive correction, and the real tags did no better than shuffled ones. The note now says so in a table, and adds that 15 of the 40 axes couldn't be tested on lab tasks at all, so the next test needs benchmarks picked for spread. It also drops the claim of a like for like match, since METR's paper gives its measure once as a ratio and once as a difference.
+* **Update**: Restored the [METR pilot](/experiments/metr/README.md) that was deleted on 22 October, so the numbers the README quotes can be checked. A rerun of its fetch and analysis scripts against METR's public data gave every number in [results](/experiments/metr/results.md) again. The pilot is marked as an archived record and not a finding. Its page now maps all 21 renamed axes to their pages today, and its count of untestable axes matches the results table, at eight mostly n/a, five that barely varied and two with no agreement. [Predictions](/experiments/metr/predictions.md) now says that the guesses, tags and results entered git in one commit, so the history can't prove the guesses came first.
+
 ## 2026-11-03
 
 * **Update**: Renamed the project from Problem Blindness to The Shape of a Problem, and the repo to `problem-shape`. "Blindness" read as a slight on the experts it describes, who are doing their best with the tools they have. The term stays in the [motivation](/MOTIVATION.md#problem-blindness), where it names what happened to the cardiologists. The [README](/README.md) now says the axes might also help map the spiky frontier of AI performance, and the licence credit points at the new repo.

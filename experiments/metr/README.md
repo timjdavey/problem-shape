@@ -1,6 +1,13 @@
+---
+type: Experiment
+title: Do the axes predict where AI agents fail?
+description: An archived pilot from October 2026 that tagged METR's public tasks on the 40 axes of the time. The tagger passed its check on full task text, and the axes gave one lead and no finding.
+---
 # Do the axes predict where AI agents fail?
 
-In March 2025 METR timed people doing about 170 software and research tasks. Then they ran AI agents on the same tasks. Longer tasks were harder for agents, which is no surprise. But METR also scored each task on 16 "messiness" factors, like whether the agent could check its own answer. After allowing for length, each extra point of messiness cut agents' success by about 8 points.
+> **This is an archived pilot, not a finding.** It ran in October 2026 on the 40 axes the project had then. There are 50 now, and 21 of the 40 have new names, listed under [Old axis names](#old-axis-names). The folder was deleted on 22 October 2026, because the test couldn't be run properly without METR's private task text. It came back a month later so that anyone can check the numbers the main [README](../../README.md#future-projects) quotes. On 23 November 2026 we reran `fetch.py` and `analyse.py` against METR's public data, and every number in [results.md](results.md) came out the same.
+
+In March 2025 METR timed people doing about 170 software and research tasks. Then they ran AI agents on the same tasks. Longer tasks were harder for agents, which is no surprise. But METR also scored each task on 16 "messiness" factors, like whether the agent could check its own answer. After allowing for length, each extra point of messiness cut agents' mean success by roughly 8.1%, in METR's words.
 
 That result is the README's best evidence that tagging problems pays off. But it is METR's evidence, not ours. This experiment asks whether our axes do the same job. A model tags each task on every axis without seeing how agents did. Then we check which axes separate the tasks agents pass from the ones they fail. The answer should show which six to ten axes do real work, and which ones are decoration on this kind of task.
 
@@ -24,6 +31,8 @@ You need [uv](https://docs.astral.sh/uv/) and an Anthropic API key. Each script 
    To tag without an API key, run `uv run blind.py prepare` instead. It writes batches to `data/blind/<pass>/batch_<n>/`, each with a rubric, the tasks under anonymous ids and an `INSTRUCTIONS.md`. Point a subagent or a fresh chat at each folder. Then run `uv run blind.py collect` and `uv run tag.py --collect-only`.
 4. Hand tag the 15 tasks in `data/hand_tags_tasks.md`, using `data/hand_tags_template.csv`. Save it as `data/hand_tags.csv`.
 5. `uv run analyse.py` writes `results.md`.
+
+To check the archived numbers you only need steps 1 and 5. `analyse.py` reads the tags in `tags.csv`, so it needs no API key and gives the same results every time. Step 3 is different. `tag.py` builds its rubric from today's axis files, so tagging again would score the 50 current axes and not the 40 used here.
 
 ## What each step tests
 
@@ -51,13 +60,39 @@ The pilot was tagged by nine Claude subagents in October 2026, three for each pa
 
 **One axis stands out, as predicted.** Easy vs hard to verify was the top guess in `predictions.md`. It is the strongest single axis: agents succeed about 23 points less often on hard to verify tasks than on easy ones of the same length. It is also the only axis to make the shortlist. METR's closest factor, "no provided verification mechanisms", is also their strongest. But the result doesn't survive correction for testing 25 axes (q = 0.12), and nothing predicts better than chance on held out families. Treat it as a lead, not a finding.
 
-**Fifteen axes have nothing to grip on in these tasks.** Eight were mostly tagged n/a, among them thin vs fat tails and additive vs multiplicative. Four barely varied, like survivable vs ruinous. Three the taggers couldn't agree on, like small vs large world. Skin in the game shows the problem best: one tagger called it hard everywhere, another n/a everywhere and a third mixed. That says the axis is unclear when the solver is an AI agent, which is worth fixing in the axis file whatever happens next.
+**Fifteen axes have nothing to grip on in these tasks.** Eight were mostly tagged n/a, among them thin vs fat tails and additive vs multiplicative. Five barely varied, like survivable vs ruinous. Two the taggers couldn't agree on, small vs large world and slack vs time pressure. Skin in the game shows the problem best: one tagger called it hard everywhere, another n/a everywhere and a third mixed. That says the axis is unclear when the solver is an AI agent, which is worth fixing in the axis file whatever happens next.
 
 **What to do next.** Ask METR for the full task text. The pipeline is ready for it, and the tagger check shows it can reproduce their result when it has the real prompt.
 
 ## Old axis names
 
-The tags and results use the axis names from when the pilot ran. Since then Long vs short predictability horizon has become [Stable vs chaotic](../../axes/stable-vs-chaotic.md), Known vs unknown odds [Risk vs Knightian uncertainty](../../axes/risk-vs-knightian-uncertainty.md) and Test vs watch [Interventional vs observational](../../axes/interventional-vs-observational.md). Single vs multiple objectives is now [Single objective vs trade-offs](../../axes/single-objective-vs-trade-offs.md), Easy vs hard to verify [Verifiable vs unverifiable](../../axes/verifiable-vs-unverifiable.md) and Complete vs incomplete score [Direct vs proxy measure](../../axes/direct-vs-proxy-measure.md). Later still, Deterministic vs statistical became [Deterministic vs stochastic](../../axes/deterministic-vs-stochastic.md), Slack vs time pressure [Ample time vs time pressure](../../axes/ample-time-vs-time-pressure.md), Spread vs single bet [Diversifiable vs single bet](../../axes/diversifiable-vs-single-bet.md), Choose vs design the options [Given vs invented options](../../axes/given-vs-invented-options.md) and Even vs lopsided errors [Even vs lopsided mistakes](../../axes/even-vs-lopsided-mistakes.md). Additive vs multiplicative, Coherent vs incoherent and Clustered vs scattered gained a noun, so they now end in returns or runs. The slugs in `tags.csv` still use the old names.
+The tags and results use the axis names from when the pilot ran, and the slugs in `tags.csv` still do. Of the 40 axes, 19 kept their names and 21 changed. The [update log](../../log.md) gives the reason for each rename.
+
+| Name in the pilot | Page now |
+|---|---|
+| Additive vs multiplicative | [Flat vs compounding results](../../axes/flat-vs-compounding-results.md) |
+| Choose vs design the options | [Given vs invented options](../../axes/given-vs-invented-options.md) |
+| Clustered vs scattered | [Clustered vs scattered runs](../../axes/clustered-vs-scattered-runs.md) |
+| Coherent vs incoherent | [Coherent vs incoherent runs](../../axes/coherent-vs-incoherent-runs.md) |
+| Complete vs incomplete score | [Direct vs proxy measure](../../axes/direct-vs-proxy-measure.md) |
+| Decomposable vs tangled | [Reductionist vs holistic](../../axes/reductionist-vs-holistic.md) |
+| Deterministic vs statistical | [Deterministic vs stochastic](../../axes/deterministic-vs-stochastic.md) |
+| Easy vs hard to verify | [Verifiable vs unverifiable](../../axes/verifiable-vs-unverifiable.md) |
+| Even vs lopsided errors | [Equal vs unequal error costs](../../axes/equal-vs-unequal-error-costs.md) |
+| Kind vs wicked feedback | [Immediate vs delayed feedback](../../axes/immediate-vs-delayed-feedback.md) |
+| Known vs unknown odds | [Risk vs Knightian uncertainty](../../axes/risk-vs-knightian-uncertainty.md) |
+| Long vs short predictability horizon | [Stable vs chaotic](../../axes/stable-vs-chaotic.md) |
+| Loose vs tight coupling | [Buffered vs cascading](../../axes/buffered-vs-cascading.md) |
+| Single vs multiple objectives | [Single objective vs trade-offs](../../axes/single-objective-vs-trade-offs.md) |
+| Slack vs time pressure | [Ample time vs time pressure](../../axes/ample-time-vs-time-pressure.md) |
+| Small vs large world | [Foreseeable vs unforeseeable outcomes](../../axes/foreseeable-vs-unforeseeable-outcomes.md) |
+| Smooth vs rugged | [Forgiving vs exacting](../../axes/forgiving-vs-exacting.md) |
+| Spread vs single bet | [Diversifiable vs single bet](../../axes/diversifiable-vs-single-bet.md) |
+| Stationary vs drifting | [Durable vs perishable lessons](../../axes/durable-vs-perishable-lessons.md) |
+| Test vs watch | [Interventional vs observational](../../axes/interventional-vs-observational.md) |
+| Tractable vs intractable search | [Tractable vs intractable options](../../axes/tractable-vs-intractable-options.md) |
+
+Two of these changed in meaning as well as in name. Kind vs wicked feedback was a bundle of several ways experience can mislead you, and only the delay stayed on the page it became. Convergent vs divergent kept its name but was reworded to pull it apart from Single vs multiple objectives, which the taggers had put in the same band on 167 of 252 units.
 
 ## Limits
 
