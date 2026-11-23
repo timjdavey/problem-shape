@@ -104,7 +104,7 @@ This will never be finished. If you spot a missing framework, a wrong link or a 
 
 In 2025 [METR](https://arxiv.org/abs/2503.14499) scored its tasks on 16 "messiness" factors, like whether the agent could check its own answer. In their words, "an increase in task messiness by 1 point reduces mean success rates by roughly 8.1%". That is a fantastic start at using traits like these axes to quantify performance.
 
-We'd like to run the same kind of test with these axes. So far there is only a [scratch proof of concept](experiments/metr/README.md). Claude Fable designed it and Claude Opus built and ran it, each working on its own, and no person has reviewed it in depth yet. Please don't put much trust in its results or its design, and don't spend long reviewing it. This is still at the idea stage, and a fuller, properly reviewed study is planned soon.
+We'd like to run the same kind of test with these axes. So far we pulled together a [scratch proof of concept](experiments/metr/README.md). However, note this was built by Claude and it has not been reviewed by a human in depth yet. So please don't put much trust in its results or its design. This is still at the idea stage, and a fuller, properly reviewed study is planned very soon.
 
 ## Licence
 
