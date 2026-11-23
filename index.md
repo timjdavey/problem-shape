@@ -26,6 +26,6 @@ okf_version: "0.2"
 
 # Experiments
 
-* [Do the axes predict where AI agents fail?](experiments/metr/README.md) - An archived pilot from October 2026 that tagged METR's public tasks on the 40 axes of the time. The tagger passed its check on full task text, and the axes gave one lead and no finding.
-* [Predictions](experiments/metr/predictions.md) - The guesses written for the pilot about which axes would matter, and why the git history can't prove they came first.
-* [Results](experiments/metr/results.md) - Every table from the pilot, written by its analysis script from the tags and METR's public run data.
+* [Do the axes predict where AI agents fail?](experiments/metr/README.md) - A scratch proof of concept from October 2026 that tagged METR's public tasks on the 40 axes of the time. AI models designed and ran it, and no person has reviewed it in depth yet, so don't lean on its results.
+* [Predictions](experiments/metr/predictions.md) - The guesses written for the proof of concept about which axes would matter, and why the git history can't prove they came first.
+* [Results](experiments/metr/results.md) - Every table from the proof of concept, written by its analysis script from the tags and METR's public run data. Not yet reviewed by a person.

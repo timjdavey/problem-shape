@@ -5,6 +5,8 @@ description: The guesses written for the METR pilot about which axes would predi
 ---
 # Predictions
 
+> **Scratch proof of concept.** AI models designed and ran this pilot, and no person has reviewed it in depth yet. Read the [warning on the pilot page](README.md) before you rely on anything here.
+>
 > **The git history can't prove these came first.** This file, the tags and the results all entered the repo in one commit on 19 October 2026. So treat "as predicted" in the [pilot README](README.md) as our word, not as a registered prediction. A rerun should commit this file on its own before any task is tagged.
 
 Written before any task was tagged. Commit this file before running `tag.py`, so the git history shows the guesses came first.

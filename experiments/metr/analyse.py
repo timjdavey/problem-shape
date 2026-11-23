@@ -297,9 +297,11 @@ def main() -> None:
     report = ["---",
               "type: Experiment",
               "title: Results of the METR pilot",
-              "description: Every table from the archived METR pilot of October 2026, written by analyse.py from tags.csv and METR's public run data.",
+              "description: Every table from the scratch METR pilot of October 2026, written by analyse.py from tags.csv and METR's public run data. Not yet reviewed by a person.",
               "---",
               "# METR retagging: results", "",
+              "> **Scratch proof of concept.** AI models designed and ran this pilot, and no person has reviewed it in depth yet. "
+              "Read the [warning on the pilot page](README.md) before you rely on any number here.", "",
               f"Runs file: time horizon {args.runs}. SWAA and human runs dropped.", "",
               "These runs used the 40 axes of October 2026 under their old names. "
               "[Old axis names](README.md#old-axis-names) maps each one to its page now. "

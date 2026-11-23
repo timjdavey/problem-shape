@@ -1,11 +1,11 @@
 ---
 type: Experiment
 title: Do the axes predict where AI agents fail?
-description: An archived pilot from October 2026 that tagged METR's public tasks on the 40 axes of the time. The tagger passed its check on full task text, and the axes gave one lead and no finding.
+description: A scratch proof of concept from October 2026 that tagged METR's public tasks on the 40 axes of the time. AI models designed and ran it, and no person has reviewed it in depth yet.
 ---
 # Do the axes predict where AI agents fail?
 
-> **This is an archived pilot, not a finding.** It ran in October 2026 on the 40 axes the project had then. There are 50 now, and 21 of the 40 have new names, listed under [Old axis names](#old-axis-names). The folder was deleted on 22 October 2026, because the test couldn't be run properly without METR's private task text. It came back a month later so that anyone can check the numbers the main [README](../../README.md#future-projects) quotes. On 23 November 2026 we reran `fetch.py` and `analyse.py` against METR's public data, and every number in [results.md](results.md) came out the same.
+> **Scratch proof of concept. Read this first.** Claude Fable designed this pilot and Claude Opus built and ran it, each working on its own with no person checking the steps. The tags came from Claude Opus and Sonnet subagents. No person has reviewed the design, the code or the results in depth. Don't put much trust in any number here, and don't spend long reviewing it yet. The project is at the idea stage. A more detailed and comprehensive review is planned soon, and this page will change when it lands.
 
 In March 2025 METR timed people doing about 170 software and research tasks. Then they ran AI agents on the same tasks. Longer tasks were harder for agents, which is no surprise. But METR also scored each task on 16 "messiness" factors, like whether the agent could check its own answer. After allowing for length, each extra point of messiness cut agents' mean success by roughly 8.1%, in METR's words.
 
@@ -50,11 +50,19 @@ The tagger sees only the task text. It never sees the task's name, its human tim
 
 ## Does the analysis work?
 
-Before any real tags exist, I tested `analyse.py` twice on fake tags. In the first run one axis was planted to track agent success and the other 39 were random. The planted axis was the only one on the shortlist, and the shuffle test passed with p = 0.01. In the second run every axis was random. The shortlist came back empty, no axis survived the correction and the shuffle test failed with p = 0.35. So the method finds a real signal and doesn't make one up.
+Before any real tags existed, Claude Opus tested `analyse.py` twice on fake tags. In the first run one axis was planted to track agent success and the other 39 were random. The planted axis was the only one on the shortlist, and the shuffle test passed with p = 0.01. In the second run every axis was random. The shortlist came back empty, no axis survived the correction and the shuffle test failed with p = 0.35. So the method finds a real signal and doesn't make one up.
 
 ## What the pilot found
 
-The pilot was tagged by nine Claude subagents in October 2026, three for each pass. Each saw only the rubric and anonymised task text. Sonnet was blocked by a safety classifier on six hacking challenge tasks, so those have two raters instead of three. The full numbers are in `results.md`.
+The pilot was tagged by nine Claude subagents in October 2026, three for each pass. Each saw only the rubric and anonymised task text. Sonnet was blocked by a safety classifier on six hacking challenge tasks, so those have two raters instead of three. The full numbers are in [results.md](results.md).
+
+In short, the pilot did not show that our axes predict agent success.
+
+| Question | Short answer |
+|---|---|
+| Can a model tag tasks well enough to trust? | Yes on full task text, no on one line summaries. |
+| Do our axes predict success beyond task length? | Not on this data. One axis gave a lead that didn't survive correction, and real tags did no better than shuffled ones (p = 0.77). |
+| How many axes could these tasks test at all? | 25 of the 40 we had then. |
 
 **The tagger works, but only on real task text.** On the 23 tasks with their full prompt, our tags of METR's 16 factors give a slope of −0.085 per point (95% interval −0.15 to −0.02). METR's own human labels gave −0.081. On the 139 tasks tagged from a one line family summary, the slope falls to −0.015 and the interval spans zero. So the method is sound and the summaries are too thin to tag. By the rule we set in advance, nothing below the tagger check counts as evidence until we have the full text.
 
@@ -62,7 +70,16 @@ The pilot was tagged by nine Claude subagents in October 2026, three for each pa
 
 **Fifteen axes have nothing to grip on in these tasks.** Eight were mostly tagged n/a, among them thin vs fat tails and additive vs multiplicative. Five barely varied, like survivable vs ruinous. Two the taggers couldn't agree on, small vs large world and slack vs time pressure. Skin in the game shows the problem best: one tagger called it hard everywhere, another n/a everywhere and a third mixed. That says the axis is unclear when the solver is an AI agent, which is worth fixing in the axis file whatever happens next.
 
-**What to do next.** Ask METR for the full task text. The pipeline is ready for it, and the tagger check shows it can reproduce their result when it has the real prompt.
+## What a proper test needs
+
+1. **A review by a person.** Nobody has yet checked the design, the code or the tags in depth, and that comes before anything else.
+2. **The full text of every task, with results for each one.** One line summaries are too thin to tag.
+3. **Far more than 11 task families.** A sample this small can only show very large effects.
+4. **Benchmarks picked for their spread across the axes.** More lab tasks of the same kind would leave the same 15 axes untested.
+5. **Tags from people as well as models.**
+6. **Predictions committed before any task is tagged.**
+
+If you hold task text and per task results and would like to run this with us, please get in touch. The tagging can run on your side, so the text never leaves your hands.
 
 ## Old axis names
 
@@ -98,6 +115,14 @@ Two of these changed in meaning as well as in name. Kind vs wicked feedback was 
 
 - About 74 families can only show large effects. A null result for one axis is weak evidence.
 - In the pilot most tasks are tagged from a one or two sentence summary. Axes that need detail, like reversible vs irreversible, will be noisy until METR shares the full text.
-- These are lab tasks for agents, so they cover a narrow band of problems. Axes about people, values and accountability are untested here, not refuted.
+- These are lab tasks for agents, so they cover a narrow band of problems. Each task goes to one agent working alone in a sandbox with a time limit. Nobody else has a say in the goal, nobody answers for the result and no real loss is at stake. So the tasks sit at the easy end of the axes about values, accountability and stakes, and those axes are untested here, not refuted.
+- The match of −0.085 with −0.081 is a loose one. It rests on 23 tasks from 11 families. METR's labels came from people and ours from Claude models. METR's paper also gives its measure once as a ratio (Section 4.1) and once as a plain difference (Figure 10), and ours is the difference.
+- The git history can't prove the guesses came first. [predictions.md](predictions.md), the tags and the results all entered the repo in one commit, so "as predicted" is our word and not a registered prediction.
 - The tagger is a model tagging tasks for models. If it shares the agents' blind spots, tags and failures could line up for reasons that have nothing to do with the axis. The hand tags are the guard against this.
 - METR say their own factors were picked partly because they seemed to hurt agents. Our axes weren't, which is a fairer test but means a smaller effect is still a good result.
+
+## History of this folder
+
+The pilot ran in October 2026 on the 40 axes the project had then. There are 50 now, and 21 of the 40 have new names, listed under [Old axis names](#old-axis-names). The folder was deleted on 22 October 2026, because the test couldn't be run properly without METR's private task text. It came back on 23 November 2026 so that the work is open to check.
+
+On the same day Claude Fable 5.2 reran `fetch.py` and `analyse.py` against METR's public data, and every number in [results.md](results.md) came out the same. That shows the scripts give the same output from the same tags. It is not a review of the design. Claude Fable 5.2 also corrected this page, by fixing the count of untestable axes, adding the map of old names and adding two of the limits above.

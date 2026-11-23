@@ -93,7 +93,7 @@ grid/
 ├── placements.csv           the cell each grid gave each axis
 └── second-party.md          one file per grid, 3 in all
 experiments/
-└── metr/                    an archived pilot that tested the axes on METR's public tasks
+└── metr/                    a scratch proof of concept on METR's public tasks, not yet reviewed
 ```
 
 ## Contributing
@@ -102,21 +102,9 @@ This will never be finished. If you spot a missing framework, a wrong link or a 
 
 ## Future projects
 
-In 2025 [METR](https://arxiv.org/abs/2503.14499) scored its tasks on 16 "messiness" factors, like whether the agent could check its own answer. Agents did worse on messier tasks than the task's length alone would predict. In METR's words, "an increase in task messiness by 1 point reduces mean success rates by roughly 8.1%". That is a fantastic start at using traits like these axes to quantify performance.
+In 2025 [METR](https://arxiv.org/abs/2503.14499) scored its tasks on 16 "messiness" factors, like whether the agent could check its own answer. In their words, "an increase in task messiness by 1 point reduces mean success rates by roughly 8.1%". That is a fantastic start at using traits like these axes to quantify performance.
 
-In October 2026 we ran a [pilot](experiments/metr/README.md) to see whether our axes do the same job on METR's public data. **It did not show that they do.** The code, tags and results are in the repo, and the numbers below still reproduce from METR's public files.
-
-| Question | What the pilot found |
-|---|---|
-| Can a model tag tasks well enough to trust? | Yes on full task text, no on summaries. As a check, our tagger scored METR's own 16 factors. On the 23 tasks whose full text is public, the slope was −0.085 per messiness point (95% interval −0.151 to −0.019), against METR's −0.081. On the 139 tasks with only a one or two sentence summary it was −0.015, with an interval that spans zero. |
-| Do our axes predict success beyond task length? | Not on this data. [Verifiable vs unverifiable](axes/verifiable-vs-unverifiable.md) came out strongest. Agents succeeded about 23 points less often on hard to verify tasks than on easy ones of the same length. But it didn't survive the correction for testing 25 axes at once (q = 0.12). The axes together predicted no better than chance on task families held back from the fit. Real tags did no better than shuffled ones (p = 0.77). |
-| How many axes could these tasks test at all? | 25 of the 40 we had then. Eight were tagged n/a on most tasks, like [Thin vs fat tails](axes/thin-vs-fat-tails.md). Five barely varied, like [Survivable vs ruinous](axes/survivable-vs-ruinous.md). On two the taggers couldn't agree. |
-
-The match of −0.085 with −0.081 is a check on the tagger. It says nothing about our axes, and it is a loose match. It rests on 23 tasks from 11 task families. METR's labels came from people and ours from Claude models. METR's paper also gives its measure once as a ratio and once as a plain difference, and ours is the difference. Verifiable vs unverifiable was our top guess beforehand, but the guesses went into git in the same commit as the results, so the history can't prove they came first.
-
-The last row matters most for what comes next. Each of these tasks goes to one agent working alone in a sandbox with a time limit. Nobody else has a say in the goal, nobody answers for the result and no real loss is at stake. So the tasks sit at the easy end of the axes about values, accountability and stakes, and more tasks of the same kind won't change that. A fair test needs benchmarks picked for their spread across the axes.
-
-A proper test needs four more things: the full text of every task with results for each one, far more than 11 task families, tags from people as well as models, and predictions committed before any task is tagged. If you hold task text and per task results and would like to run this with us, please get in touch. The tagging can run on your side, so the text never leaves your hands.
+We'd like to run the same kind of test with these axes. So far there is only a [scratch proof of concept](experiments/metr/README.md). Claude Fable designed it and Claude Opus built and ran it, each working on its own, and no person has reviewed it in depth yet. Please don't put much trust in its results or its design, and don't spend long reviewing it. This is still at the idea stage, and a fuller, properly reviewed study is planned soon.
 
 ## Licence
 
