@@ -1,5 +1,9 @@
 # Update Log
 
+## 2026-11-27
+
+* **Update**: The [quick taste](/README.md#a-quick-taste) gains an AI example. Anthropic's [automated safety researchers](https://arxiv.org/abs/2608.28945) beat human researchers on failures that each had a benchmark to score against. The UK AI Security Institute had [warned](https://arxiv.org/abs/2605.06390) that automation only works on "crisp" tasks, the easy end of [Verifiable vs unverifiable](/axes/verifiable-vs-unverifiable.md). Anthropic's paper says the same, and a later version changed its title from "reliably mitigate alignment failures" to "mitigate well-characterized alignment failures".
+
 ## 2026-11-23
 
 * **Update**: Corrected the METR note under [Future projects](/README.md#future-projects), which claimed more than the work showed, and cut it to two short paragraphs. It said we had benchmarked our axes on METR's tasks and found 8.5% a point against their 8.1%. The 8.5 was a check on the tagger, where our pipeline scored METR's own 16 factors, and it held only on the 23 tasks with full public text. On our own axes there was one lead, Verifiable vs unverifiable, that didn't survive correction. The README now quotes no number of ours. It says the work is a scratch proof of concept that Claude Fable designed and Claude Opus built and ran, that no person has reviewed it in depth, and that readers shouldn't lean on it or spend long reviewing it yet. The project is at the idea stage and a fuller, properly reviewed study is planned.
