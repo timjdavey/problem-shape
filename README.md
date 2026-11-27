@@ -36,7 +36,7 @@ Treating a heart attack is two problems in one task.
 
 We've seen cardiologists trained to trust their gut on the procedure brought the same gut to the decision, and their patients did worse for it. The [motivation](MOTIVATION.md#problem-blindness) tells the full story.
 
-AI models hit the same split. In 2026 Anthropic's [automated safety researchers](https://arxiv.org/abs/2608.28945) beat human researchers at training out failures like deception and sycophancy, because each failure had a benchmark to score against. The UK AI Security Institute had [already warned](https://arxiv.org/abs/2605.06390) that this only works on "crisp" tasks, where success is [verifiable](axes/verifiable-vs-unverifiable.md), and that most safety work isn't like that. Anthropic's paper agrees, "Without benchmarks, AARs have nothing to hill-climb against", and its title went from "reliably mitigate alignment failures" to "mitigate well-characterized alignment failures".
+Also in 2026 Anthropic's [automated safety researchers](https://arxiv.org/abs/2608.28945) beat human researchers at training out failures like deception and sycophancy, because each failure had a benchmark to score against. The UK AI Security Institute had [already warned](https://arxiv.org/abs/2605.06390) that this only works on "crisp" tasks, where success is [verifiable](axes/verifiable-vs-unverifiable.md), and that most safety work isn't like that. Anthropic's paper agrees, "Without benchmarks, AARs have nothing to hill-climb against", and its title went from "reliably mitigate alignment failures" to "mitigate well-characterized alignment failures". This is likely true for more axes than just verifiability.
 
 ## Why the vocabulary needs pinning down
 
